@@ -9,6 +9,7 @@ import com.chargebee.models.enums.*;
 import org.json.*;
 import java.io.*;
 import java.sql.Timestamp;
+import java.math.BigDecimal;
 import java.util.*;
 
 public class Subscription extends Resource<Subscription> {
