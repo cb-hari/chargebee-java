@@ -349,6 +349,10 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
+        public CreateSubscriptionRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+            return this;
+        }
         public CreateSubscriptionRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
             params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
             return this;
@@ -538,6 +542,10 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
+        public CreateSubForCustomerEstimateRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+            return this;
+        }
         public CreateSubForCustomerEstimateRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
             params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
             return this;
@@ -568,6 +576,12 @@ public class Estimate extends Resource<Estimate> {
     
         public UpdateSubscriptionRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
+
+        public UpdateSubscriptionRequest eventBasedAddons(String eventBasedAddons) {
+            params.addOpt("event_based_addons", eventBasedAddons);
             return this;
         }
 
@@ -829,6 +843,10 @@ public class Estimate extends Resource<Estimate> {
         }
         public UpdateSubscriptionRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public UpdateSubscriptionRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
             return this;
         }
         public UpdateSubscriptionRequest eventBasedAddonChargeOn(int index, com.chargebee.models.enums.ChargeOn eventBasedAddonChargeOn) {

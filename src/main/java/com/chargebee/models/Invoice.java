@@ -112,6 +112,10 @@ public class Invoice extends Resource<Invoice> {
             return optString("entity_id");
         }
 
+        public String customerId() {
+            return optString("customer_id");
+        }
+
     }
 
     public static class Discount extends Resource<Discount> {
@@ -785,6 +789,10 @@ public class Invoice extends Resource<Invoice> {
         return optSubResource("billing_address", Invoice.BillingAddress.class);
     }
 
+    public String paymentOwner() {
+        return optString("payment_owner");
+    }
+
     public Boolean deleted() {
         return reqBoolean("deleted");
     }
@@ -1053,6 +1061,14 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
+        public CreateRequest addonDateFrom(int index, Timestamp addonDateFrom) {
+            params.addOpt("addons[date_from][" + index + "]", addonDateFrom);
+            return this;
+        }
+        public CreateRequest addonDateTo(int index, Timestamp addonDateTo) {
+            params.addOpt("addons[date_to][" + index + "]", addonDateTo);
+            return this;
+        }
         public CreateRequest chargeAmount(int index, Integer chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
@@ -1071,6 +1087,14 @@ public class Invoice extends Resource<Invoice> {
         }
         public CreateRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
             params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+            return this;
+        }
+        public CreateRequest chargeDateFrom(int index, Timestamp chargeDateFrom) {
+            params.addOpt("charges[date_from][" + index + "]", chargeDateFrom);
+            return this;
+        }
+        public CreateRequest chargeDateTo(int index, Timestamp chargeDateTo) {
+            params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
             return this;
         }
         @Override
@@ -1111,6 +1135,18 @@ public class Invoice extends Resource<Invoice> {
 
         public ChargeRequest description(String description) {
             params.add("description", description);
+            return this;
+        }
+
+
+        public ChargeRequest dateFrom(Timestamp dateFrom) {
+            params.addOpt("date_from", dateFrom);
+            return this;
+        }
+
+
+        public ChargeRequest dateTo(Timestamp dateTo) {
+            params.addOpt("date_to", dateTo);
             return this;
         }
 
@@ -1193,6 +1229,18 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ChargeAddonRequest dateFrom(Timestamp dateFrom) {
+            params.addOpt("date_from", dateFrom);
+            return this;
+        }
+
+
+        public ChargeAddonRequest dateTo(Timestamp dateTo) {
+            params.addOpt("date_to", dateTo);
+            return this;
+        }
+
+
         public ChargeAddonRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;
@@ -1234,7 +1282,7 @@ public class Invoice extends Resource<Invoice> {
             return params;
         }
     }
-    
+
     public static class ImportInvoiceRequest extends Request<ImportInvoiceRequest> {
 
         private ImportInvoiceRequest(Method httpMeth, String uri) {
@@ -1681,7 +1729,7 @@ public class Invoice extends Resource<Invoice> {
         private ApplyCreditsRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
-        
+    
         public ApplyCreditsRequest comment(String comment) {
             params.addOpt("comment", comment);
             return this;
@@ -1715,6 +1763,8 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("include_deleted", includeDeleted);
             return this;
         }
+
+
 
 
 
@@ -1786,6 +1836,11 @@ public class Invoice extends Resource<Invoice> {
 
         public EnumFilter<Invoice.DunningStatus, InvoiceListRequest> dunningStatus() {
             return new EnumFilter<Invoice.DunningStatus, InvoiceListRequest>("dunning_status",this).supportsPresenceOperator(true);        
+        }
+
+
+        public StringFilter<InvoiceListRequest> paymentOwner() {
+            return new StringFilter<InvoiceListRequest>("payment_owner",this).supportsMultiOperators(true);        
         }
 
 
@@ -1868,10 +1923,12 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+
         public AddChargeRequest comment(String comment) {
             params.addOpt("comment", comment);
             return this;
         }
+
 
         public AddChargeRequest lineItemDateFrom(Timestamp lineItemDateFrom) {
             params.addOpt("line_item[date_from]", lineItemDateFrom);
@@ -2209,6 +2266,12 @@ public class Invoice extends Resource<Invoice> {
     
         public DeleteRequest comment(String comment) {
             params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        public DeleteRequest claimCredits(Boolean claimCredits) {
+            params.addOpt("claim_credits", claimCredits);
             return this;
         }
 

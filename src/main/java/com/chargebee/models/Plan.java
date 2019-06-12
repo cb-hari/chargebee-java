@@ -14,6 +14,7 @@ import java.util.*;
 public class Plan extends Resource<Plan> {
 
     public enum PeriodUnit {
+        DAY,
         WEEK,
         MONTH,
         YEAR,
@@ -58,6 +59,7 @@ public class Plan extends Resource<Plan> {
         YEAR,
         MONTH,
         WEEK,
+        DAY,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -886,6 +888,26 @@ public class Plan extends Resource<Plan> {
 
         public UpdateRequest metaData(JSONObject metaData) {
             params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
+
+
+        public UpdateRequest applicableAddons(String applicableAddons) {
+            params.addOpt("applicable_addons", applicableAddons);
+            return this;
+        }
+
+
+        public UpdateRequest attachedAddons(String attachedAddons) {
+            params.addOpt("attached_addons", attachedAddons);
+            return this;
+        }
+
+
+        public UpdateRequest eventBasedAddons(String eventBasedAddons) {
+            params.addOpt("event_based_addons", eventBasedAddons);
             return this;
         }
 

@@ -24,8 +24,16 @@ public class ResultBase {
         return (Customer)get("customer");
     }
 
+    public Hierarchy hierarchy() {
+        return (Hierarchy)get("hierarchy");
+    }
+
     public Contact contact() {
         return (Contact)get("contact");
+    }
+
+    public Token token() {
+        return (Token)get("token");
     }
 
     public PaymentSource paymentSource() {
@@ -124,6 +132,22 @@ public class ResultBase {
         return (PortalSession)get("portal_session");
     }
 
+    public ThirdPartyConfiguration thirdPartyConfiguration() {
+        return (ThirdPartyConfiguration)get("third_party_configuration");
+    }
+
+    public ThirdPartySyncDetail thirdPartySyncDetail() {
+        return (ThirdPartySyncDetail)get("third_party_sync_detail");
+    }
+
+    public ThirdPartyEntityMapping thirdPartyEntityMapping() {
+        return (ThirdPartyEntityMapping)get("third_party_entity_mapping");
+    }
+
+    public TpSiteUser tpSiteUser() {
+        return (TpSiteUser)get("tp_site_user");
+    }
+
     public SiteMigrationDetail siteMigrationDetail() {
         return (SiteMigrationDetail)get("site_migration_detail");
     }
@@ -146,6 +170,10 @@ public class ResultBase {
 
     public List<CreditNote> creditNotes() {
         return (List<CreditNote>) getList("credit_notes", "credit_note");
+    }
+
+    public List<Hierarchy> hierarchies() {
+        return (List<Hierarchy>) getList("hierarchies", "hierarchy");
     }
 
     public List<Invoice> invoices() {
